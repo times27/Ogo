@@ -12,9 +12,10 @@ namespace CourseWork
 {
     public partial class WordLibraryForm : Form
     {
-        public WordLibraryForm()
+        public WordLibraryForm(Person person)
         {
             InitializeComponent();
+            profileLink.Text = person.FirstName + person.FirstName;
         }
 
         private void profileLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -26,6 +27,11 @@ namespace CourseWork
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void WordLibraryForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

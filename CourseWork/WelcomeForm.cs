@@ -23,7 +23,7 @@ namespace CourseWork
         {
             if(personStorage.LoginInStorage(loginTextBox.Text))
             {
-                WordLibraryForm wordLibraryForm = new WordLibraryForm();
+                WordLibraryForm wordLibraryForm = new WordLibraryForm(Person[Person.FindIndex((u)=>u.Login==loginTextBox.Text)]);
                 this.Hide();
                 wordLibraryForm.ShowDialog();
                 this.Show();

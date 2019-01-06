@@ -48,10 +48,8 @@
             this.profileLink.LinkColor = System.Drawing.Color.Black;
             this.profileLink.Location = new System.Drawing.Point(548, 24);
             this.profileLink.Name = "profileLink";
-            this.profileLink.Size = new System.Drawing.Size(72, 17);
+            this.profileLink.Size = new System.Drawing.Size(0, 17);
             this.profileLink.TabIndex = 1;
-            this.profileLink.TabStop = true;
-            this.profileLink.Text = "linkLabel1";
             this.profileLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.profileLink_LinkClicked);
             // 
             // button1
@@ -74,6 +72,7 @@
             this.Controls.Add(this.listBox1);
             this.Name = "WordLibraryForm";
             this.Text = "Библиотеки";
+            this.Load += new System.EventHandler(this.WordLibraryForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
