@@ -79,6 +79,7 @@
             this.createWorldLibraryButton.TabIndex = 3;
             this.createWorldLibraryButton.Text = "Создать библиотеку слов";
             this.createWorldLibraryButton.UseVisualStyleBackColor = true;
+            this.createWorldLibraryButton.Click += new System.EventHandler(this.createWorldLibraryButton_Click);
             // 
             // useWorldLibraryButton
             // 

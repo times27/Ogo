@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace CourseWork
 {
-    public class WordLibrary
+    public class WordStorage
     {
-       public WordLibrary()//
+       public WordStorage()
         {
             Words = new List<Word>();
         }
         List<Word> Words { get; set; }
-       
         public void AddWord(string piece1, string piece2)
         {
             Word word = new Word() { Piece1 = piece1, Piece2 = piece2 };

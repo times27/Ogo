@@ -47,5 +47,6 @@ namespace CourseWork
         {
             this.Close();
         }
+
     }
 }

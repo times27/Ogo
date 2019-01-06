@@ -20,6 +20,7 @@ namespace CourseWork
         }
 
         Person person = new Person();
+        LibraryStorage libraryStorage = new LibraryStorage();
         private void profileLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
@@ -42,6 +43,17 @@ namespace CourseWork
 
         private void WordLibraryForm_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void createWorldLibraryButton_Click(object sender, EventArgs e)
+        {
+            WordStorage wordStorage = new WordStorage();
+            libraryStorage.AddLibrary(wordStorage);
+            foreach (var item in libraryStorage.id)
+            {
+                worldLibraryListBox.Text += item;
+            }
 
         }
     }

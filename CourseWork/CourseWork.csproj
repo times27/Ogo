@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LibraryStorage.cs" />
     <Compile Include="NewPersonForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,7 +69,7 @@
     <Compile Include="WelcomeForm.Designer.cs">
       <DependentUpon>WelcomeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WordLibrary.cs" />
+    <Compile Include="WordStorage.cs" />
     <Compile Include="Word.cs" />
     <Compile Include="WordLibraryForm.cs">
       <SubType>Form</SubType>

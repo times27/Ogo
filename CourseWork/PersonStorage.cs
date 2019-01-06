@@ -9,10 +9,7 @@ namespace CourseWork
 {
     public class PersonStorage
     { 
-        public PersonStorage()
-        {
-            persons = this.LoadPersons();
-        }
+       
         public List<Person> persons = new List<Person>();
         XmlSerializer formatter = new XmlSerializer(typeof(List<Person>));
         
