@@ -33,7 +33,7 @@ namespace CourseWork
                 Persons = personStorage.AddPerson(person);
                 personStorage.SavePersons(Persons);
                 MessageBox.Show("Пользователь добавлен.");
-                this.Hide();
+                this.Close();
             }
             else
             {
@@ -48,7 +48,7 @@ namespace CourseWork
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void loginButton_Click(object sender, EventArgs e)

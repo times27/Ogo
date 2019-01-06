@@ -70,7 +70,7 @@
             this.exitButton.TabIndex = 3;
             this.exitButton.Text = "Выход";
             this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.button1_Click);
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // WelcomeForm
             // 

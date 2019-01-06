@@ -15,19 +15,20 @@ namespace CourseWork
         public WelcomeForm()
         {
             InitializeComponent();
-            Persons = personStorage.LoadPersons();
         }
         public List<Person> Persons { get; set; }
         public PersonStorage personStorage = new PersonStorage();
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            if(personStorage.LoginInStorage(loginTextBox.Text))
+            Persons = personStorage.LoadPersons();
+            if (personStorage.LoginInStorage(loginTextBox.Text))
             {
                 WordLibraryForm wordLibraryForm = new WordLibraryForm(Persons[Persons.FindIndex((u)=>u.Login==loginTextBox.Text)]);
                 this.Hide();
                 wordLibraryForm.ShowDialog();
                 this.Show();
+                
             }
             else
             {
@@ -42,7 +43,7 @@ namespace CourseWork
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }

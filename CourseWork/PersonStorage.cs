@@ -13,7 +13,7 @@ namespace CourseWork
         {
             persons = this.LoadPersons();
         }
-        List<Person> persons = new List<Person>();
+        public List<Person> persons = new List<Person>();
         XmlSerializer formatter = new XmlSerializer(typeof(List<Person>));
         
         public void SavePersons(List<Person> persons)
@@ -43,13 +43,13 @@ namespace CourseWork
 
         public List<Person> DeletePerson(Person person)
         {
-            persons.Remove(person);
+            persons.Remove(persons.Find((u)=>u.Login==person.Login));
             return persons;
         }
 
         public List<Person> EditPerson(Person oldPerson, Person newPerson)
         {
-            persons[persons.FindIndex(p => p == oldPerson)] = newPerson;
+            persons[persons.FindIndex((p) => p.Login == oldPerson.Login)] = newPerson;
             return persons;
         }
         public bool PersonInStorage(Person person)

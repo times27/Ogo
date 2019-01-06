@@ -45,7 +45,6 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(141, 22);
             this.firstNameTextBox.TabIndex = 0;
-            this.firstNameTextBox.Text = "sd";
             // 
             // lastNameTextBox
             // 
@@ -60,9 +59,9 @@
             this.loginLabel.AutoSize = true;
             this.loginLabel.Location = new System.Drawing.Point(28, 153);
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(47, 17);
+            this.loginLabel.Size = new System.Drawing.Size(51, 17);
             this.loginLabel.TabIndex = 2;
-            this.loginLabel.Text = "Логин";
+            this.loginLabel.Text = "Логин:";
             // 
             // editProfileButton
             // 
@@ -89,9 +88,9 @@
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Location = new System.Drawing.Point(28, 106);
             this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(70, 17);
+            this.lastNameLabel.Size = new System.Drawing.Size(74, 17);
             this.lastNameLabel.TabIndex = 5;
-            this.lastNameLabel.Text = "Фамилия";
+            this.lastNameLabel.Text = "Фамилия:";
             this.lastNameLabel.Click += new System.EventHandler(this.lastNameLabel_Click);
             // 
             // firstNameLabel
@@ -99,9 +98,9 @@
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Location = new System.Drawing.Point(28, 63);
             this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(35, 17);
+            this.firstNameLabel.Size = new System.Drawing.Size(39, 17);
             this.firstNameLabel.TabIndex = 6;
-            this.firstNameLabel.Text = "Имя";
+            this.firstNameLabel.Text = "Имя:";
             // 
             // backButton
             // 

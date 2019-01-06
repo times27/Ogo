@@ -25,7 +25,7 @@ namespace CourseWork
             this.Hide();
             ProfileForm profileForm = new ProfileForm(person);
             profileForm.ShowDialog();
-            if (profileForm.Person == null)
+            if (profileForm.Person.FirstName == null)
             {
                 this.Close();
             }

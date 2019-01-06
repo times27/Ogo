@@ -16,9 +16,12 @@ namespace CourseWork
         {
             InitializeComponent();
             Person = person;
+            lastNameTextBox.Text = person.LastName;
+            firstNameTextBox.Text = person.FirstName;
+            loginLabel.Text = "Логин: " + person.Login;
         }
 
-        public Person Person {get;set;}
+        public Person Person { get; set; }
         private void lastNameLabel_Click(object sender, EventArgs e)
         {
 
@@ -34,16 +37,29 @@ namespace CourseWork
             }
             else
             {
+                Person person = new Person()
+                {
+                    FirstName = firstNameTextBox.Text,
+                    LastName = lastNameTextBox.Text,
+                    Login = loginLabel.Text.Split()[1]
+                };
+                PersonStorage personStorage = new PersonStorage();
+                List<Person> persons = personStorage.EditPerson(Person,person);
+                personStorage.SavePersons(persons);
                 firstNameTextBox.Enabled = false;
                 lastNameTextBox.Enabled = false;
                 editProfileButton.Text = "Изменить данные";
+                MessageBox.Show("Изменения вступят после перезагрузки");
             }
 
         }
 
         private void deletePersonButton_Click(object sender, EventArgs e)
         {
-            Person = null;
+            PersonStorage personStorage = new PersonStorage();
+            List<Person> persons = personStorage.DeletePerson(Person); 
+            personStorage.SavePersons(persons);
+            Person.FirstName = null;
             this.Close();
         }
 
