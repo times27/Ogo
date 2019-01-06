@@ -15,7 +15,7 @@ namespace CourseWork
         public WordLibraryForm(Person person)
         {
             InitializeComponent();
-            profileLink.Text = person.FirstName + person.FirstName;
+            profileLink.Text = person.FirstName+ " " + person.LastName;
         }
 
         private void profileLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
