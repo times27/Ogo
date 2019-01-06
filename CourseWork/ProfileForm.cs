@@ -12,11 +12,13 @@ namespace CourseWork
 {
     public partial class ProfileForm : Form
     {
-        public ProfileForm()
+        public ProfileForm(Person person)
         {
             InitializeComponent();
+            Person = person;
         }
 
+        public Person Person {get;set;}
         private void lastNameLabel_Click(object sender, EventArgs e)
         {
 
@@ -41,6 +43,7 @@ namespace CourseWork
 
         private void deletePersonButton_Click(object sender, EventArgs e)
         {
+            Person = null;
             this.Close();
         }
 

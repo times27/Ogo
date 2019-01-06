@@ -15,15 +15,16 @@ namespace CourseWork
         public WelcomeForm()
         {
             InitializeComponent();
-            Person = personStorage.LoadPersons();
+            Persons = personStorage.LoadPersons();
         }
-        public List<Person> Person { get; set; }
+        public List<Person> Persons { get; set; }
         public PersonStorage personStorage = new PersonStorage();
+
         private void loginButton_Click(object sender, EventArgs e)
         {
             if(personStorage.LoginInStorage(loginTextBox.Text))
             {
-                WordLibraryForm wordLibraryForm = new WordLibraryForm(Person[Person.FindIndex((u)=>u.Login==loginTextBox.Text)]);
+                WordLibraryForm wordLibraryForm = new WordLibraryForm(Persons[Persons.FindIndex((u)=>u.Login==loginTextBox.Text)]);
                 this.Hide();
                 wordLibraryForm.ShowDialog();
                 this.Show();
