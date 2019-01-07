@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LibraryStorage.cs" />
+    <Compile Include="SectionStorage.cs" />
     <Compile Include="NewPersonForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +69,12 @@
     </Compile>
     <Compile Include="WelcomeForm.Designer.cs">
       <DependentUpon>WelcomeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WordsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WordsForm.Designer.cs">
+      <DependentUpon>WordsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WordStorage.cs" />
     <Compile Include="Word.cs" />
@@ -97,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WordLibraryForm.resx">
       <DependentUpon>WordLibraryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WordsForm.resx">
+      <DependentUpon>WordsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -5,21 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Xml;
+
 namespace CourseWork
 {
-    public class LibraryStorage
+    class LibraryStorage
     {
         public LibraryStorage()
         {
             Library = this.LoadLibrary();
-            id = "1";
         }
-        public string id;
+        public List<SectionStorage> Library { get; set; }
+        XmlSerializer formatter = new XmlSerializer(typeof(List<SectionStorage>));
 
-        List<WordStorage> Library { get; set; }
-        XmlSerializer formatter = new XmlSerializer(typeof(List<WordStorage>));
-
-        public void SaveLibrary(List<WordStorage> library)
+        public void SaveLibrary(List<SectionStorage> library)
         {
             using (var xmlWriter = XmlWriter.Create("librarys.xml"))
             {
@@ -28,20 +26,47 @@ namespace CourseWork
             }
         }
 
-        public List<WordStorage> LoadLibrary()
+        public List<SectionStorage> LoadLibrary()
         {
             using (var xmlReader = XmlReader.Create("librarys.xml"))
             {
-                Library = (List<WordStorage>)formatter.Deserialize(xmlReader);
+                Library = (List<SectionStorage>)formatter.Deserialize(xmlReader);
                 xmlReader.Close();
             }
             return Library;
         }
 
-        public List<WordStorage> AddLibrary(WordStorage wordStorage)
+        public List<SectionStorage> AddLibrary(SectionStorage sectionStorage)
         {
-            Library.Add(wordStorage);
+            Library.Add(sectionStorage);
             return Library;
+        }
+        public List<SectionStorage> DeleteLibrary(string checkId)
+        {
+            Library.Remove(Library.Find(u=>u.id==checkId));
+            this.SaveLibrary(Library);
+            return Library;
+        }
+        public List<SectionStorage> EditLibrary(SectionStorage oldSectionStorage, SectionStorage newSectionStorage)
+        {
+            Library[Library.FindIndex(u => u == oldSectionStorage)] = newSectionStorage;
+            this.SaveLibrary(Library);
+            return Library;
+        }
+        public SectionStorage SearchLibrary(string checkId)
+        {
+            if (Library.Find((u) => u.id == checkId) == null)
+            {
+                SectionStorage searchLibrary = new SectionStorage();
+                searchLibrary.id = checkId;
+                Library.Add(searchLibrary);
+                this.SaveLibrary(Library);
+                return searchLibrary;
+            }
+            else
+            {
+                return Library[Library.FindIndex((u)=>u.id==checkId)];
+            }
         }
     }
 }

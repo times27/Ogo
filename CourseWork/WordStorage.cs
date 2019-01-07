@@ -13,6 +13,7 @@ namespace CourseWork
             Words = new List<Word>();
         }
         List<Word> Words { get; set; }
+        public string nameSection;
         public void AddWord(string piece1, string piece2)
         {
             Word word = new Word() { Piece1 = piece1, Piece2 = piece2 };
