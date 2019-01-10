@@ -61,25 +61,29 @@ namespace CourseWork
             Buttons[notUsedButtons[numberRandomButton]].Tag = a + " " + word.Piece1 + " " + word.Piece2; //tag
             notUsedButtons.Remove(notUsedButtons[numberRandomButton]);
         }
-        Button oldButton = new Button();
+        string oldButton = null;
         private void UsedButton(Button button)
         {
-            if (oldButton == null)
+
+            if (oldButton != null)
             {
-                if (oldButton.Tag.ToString().IndexOf(button.Text) != null)
+                if (oldButton.IndexOf(button.Text) != -1)
                 {
                     MessageBox.Show("dsd");
+                    backButton.Focus();
+
                     oldButton = null;
                 }
                 else
                 {
-                    oldButton = button;
+                    oldButton = button.Tag.ToString();
                 }
             }
             else
             {
-                oldButton = button;
+                oldButton = button.Tag.ToString();
             }
+
         }
         private void backButton_Click(object sender, EventArgs e)
         {
