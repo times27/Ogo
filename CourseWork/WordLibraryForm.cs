@@ -115,14 +115,14 @@ namespace CourseWork
 
         private void matchingWordButton_Click(object sender, EventArgs e)
         {
-            FindAFewWords findAFewWords = new FindAFewWords(sectionStorage.Sections[sectionStorageListBox.SelectedIndex],0);
+            FindAFewWords findAFewWords = new FindAFewWords(sectionStorage.Sections[sectionStorageListBox.SelectedIndex].Words,0);
             findAFewWords.ShowDialog();
 
         }
 
         private void coupleWordButton_Click(object sender, EventArgs e)
         {
-            FindAFewWords findAFewWords = new FindAFewWords(sectionStorage.Sections[sectionStorageListBox.SelectedIndex], 1);
+            FindAFewWords findAFewWords = new FindAFewWords(sectionStorage.Sections[sectionStorageListBox.SelectedIndex].Words, 1);
             findAFewWords.ShowDialog();
         }
     }

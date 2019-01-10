@@ -12,22 +12,26 @@ namespace CourseWork
 {
     public partial class FindAFewWords : Form
     {
-        public FindAFewWords(WordStorage wordStorage,int operationMode)
+        public FindAFewWords(List<Word> words, int operationMode)
         {
             InitializeComponent();
             this.UsedWords = new List<Word>();
-            this.wordStorage = wordStorage;
+            this.Words = words;
+            this.notUsedButtons = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
             this.Buttons = new Button[] { activeButton1, activeButton2, activeButton3, activeButton4, activeButton5, activeButton6, activeButton7, activeButton8, activeButton9, activeButton10, activeButton11, activeButton12, activeButton13, activeButton14, activeButton15, activeButton16 };
-            int UsedInitialButtons = 16 < wordStorage.Words.Count*2 ? 16 : wordStorage.Words.Count;
-            for (int i = 0; i < UsedInitialButtons ; i++)
+            int UsedInitialButtons = 8 < this.Words.Count ? 8 : this.Words.Count;
+            for (int i = 0; i < UsedInitialButtons; i++)
             {
-                Random1WordForButton(wordStorage.RandomWord(wordStorage.Words));
+                Word word = RandomWord(words);
+                this.Words.Remove(word);
+                RandomWordForButton(word, "0");
+                RandomWordForButton(word, "1");
             }
             if (operationMode == 0)
             {
-                for (int i = 0; i < UsedInitialButtons; i++)
+                for (int i = 0; i < Buttons.Length; i++)
                 {
-                    if (Buttons[i].Text.Split()[0] == "0")
+                    if (Buttons[i].Tag.ToString().Split()[0] == "0")
                     {
                         Buttons[i].Text = Buttons[i].Tag.ToString().Split()[1];
                     }
@@ -42,55 +46,39 @@ namespace CourseWork
         public Random random = new Random();
         string notActiveButtonText = "Не активная кнопка";
         List<Word> UsedWords { get; set; }
-        WordStorage wordStorage { get; set; }
+        List<int> notUsedButtons { get; set; }
+        List<Word> Words { get; set; }
         Button[] Buttons { get; set; }
 
-        private void Random1WordForButton(Word word)
+        private Word RandomWord(List<Word> words)
         {
-            int numberRandomButton = random.Next(0, Buttons.Length);
-            if(Buttons[numberRandomButton].Tag.ToString() !=word.Piece1)
-            {
-                Buttons[numberRandomButton].Tag = 0 + " " + word.Piece1 + " " + word.Piece2;
-                Random2WordForButton(word);
-            }
-            else
-            {
-                Random1WordForButton(word);
-            }
+            int numberRandom = random.Next(0, words.Count);
+            return words[numberRandom];
         }
-        private void Random2WordForButton(Word word)
+        private void RandomWordForButton(Word word, string a)
         {
-            int numberRandomButton = random.Next(0, Buttons.Length);
-
-            if (Buttons[numberRandomButton].Tag.ToString() != word.Piece2)
-            {
-                Buttons[numberRandomButton].Tag = 1 + " " + word.Piece1 + " " + word.Piece2;
-            }
-            else
-            {
-                Random2WordForButton(word);
-            }
+            int numberRandomButton = random.Next(0, notUsedButtons.Count);
+            Buttons[notUsedButtons[numberRandomButton]].Tag = a + " " + word.Piece1 + " " + word.Piece2; //tag
+            notUsedButtons.Remove(notUsedButtons[numberRandomButton]);
         }
-
-        public Word CheckUsedWord(Word word)
-        {
-            if (UsedWords.Find(u => u.Piece1 == word.Piece1) == null)
-            {
-                UsedWords.Add(word);
-                return word;
-            }
-            else
-            {
-                Word newWord = wordStorage.RandomWord(wordStorage.Words);
-                return CheckUsedWord(newWord);
-            }
-        }
+        Button oldButton = new Button();
         private void UsedButton(Button button)
         {
-            if (activeButton2.CausesValidation)
+            if (oldButton == null)
             {
-                MessageBox.Show("d");
-               
+                if (oldButton.Tag.ToString().IndexOf(button.Text) != null)
+                {
+                    MessageBox.Show("dsd");
+                    oldButton = null;
+                }
+                else
+                {
+                    oldButton = button;
+                }
+            }
+            else
+            {
+                oldButton = button;
             }
         }
         private void backButton_Click(object sender, EventArgs e)
