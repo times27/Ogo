@@ -33,7 +33,7 @@
             this.exitButton = new System.Windows.Forms.Button();
             this.createSectionButton = new System.Windows.Forms.Button();
             this.matchingWordButton = new System.Windows.Forms.Button();
-            this.EditWordInLibrary = new System.Windows.Forms.Button();
+            this.editWordInLibrary = new System.Windows.Forms.Button();
             this.deleteSectionButton = new System.Windows.Forms.Button();
             this.editNameSectionsButton = new System.Windows.Forms.Button();
             this.coupleWordButton = new System.Windows.Forms.Button();
@@ -54,10 +54,11 @@
             // profileLink
             // 
             this.profileLink.AutoSize = true;
+            this.profileLink.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.profileLink.LinkColor = System.Drawing.Color.Black;
             this.profileLink.Location = new System.Drawing.Point(592, 23);
             this.profileLink.Name = "profileLink";
-            this.profileLink.Size = new System.Drawing.Size(68, 17);
+            this.profileLink.Size = new System.Drawing.Size(70, 19);
             this.profileLink.TabIndex = 1;
             this.profileLink.TabStop = true;
             this.profileLink.Text = "Профиль";
@@ -87,23 +88,25 @@
             // 
             // matchingWordButton
             // 
-            this.matchingWordButton.Location = new System.Drawing.Point(559, 136);
+            this.matchingWordButton.Location = new System.Drawing.Point(558, 138);
             this.matchingWordButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.matchingWordButton.Name = "matchingWordButton";
             this.matchingWordButton.Size = new System.Drawing.Size(141, 76);
             this.matchingWordButton.TabIndex = 4;
             this.matchingWordButton.Text = "Сопоставь";
             this.matchingWordButton.UseVisualStyleBackColor = true;
+            this.matchingWordButton.Click += new System.EventHandler(this.matchingWordButton_Click);
             // 
-            // EditWordInLibrary
+            // editWordInLibrary
             // 
-            this.EditWordInLibrary.Location = new System.Drawing.Point(347, 171);
-            this.EditWordInLibrary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.EditWordInLibrary.Name = "EditWordInLibrary";
-            this.EditWordInLibrary.Size = new System.Drawing.Size(141, 76);
-            this.EditWordInLibrary.TabIndex = 5;
-            this.EditWordInLibrary.Text = "Изменить набор слов в секции";
-            this.EditWordInLibrary.UseVisualStyleBackColor = true;
+            this.editWordInLibrary.Location = new System.Drawing.Point(347, 171);
+            this.editWordInLibrary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.editWordInLibrary.Name = "editWordInLibrary";
+            this.editWordInLibrary.Size = new System.Drawing.Size(141, 76);
+            this.editWordInLibrary.TabIndex = 5;
+            this.editWordInLibrary.Text = "Изменить набор слов в секции";
+            this.editWordInLibrary.UseVisualStyleBackColor = true;
+            this.editWordInLibrary.Click += new System.EventHandler(this.editWordInLibrary_Click);
             // 
             // deleteSectionButton
             // 
@@ -136,6 +139,7 @@
             this.coupleWordButton.TabIndex = 8;
             this.coupleWordButton.Text = "Найти парочки";
             this.coupleWordButton.UseVisualStyleBackColor = true;
+            this.coupleWordButton.Click += new System.EventHandler(this.coupleWordButton_Click);
             // 
             // editNameSectionTextBox
             // 
@@ -147,7 +151,7 @@
             // 
             // editNameSectionButton
             // 
-            this.editNameSectionButton.Location = new System.Drawing.Point(558, 216);
+            this.editNameSectionButton.Location = new System.Drawing.Point(559, 216);
             this.editNameSectionButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.editNameSectionButton.Name = "editNameSectionButton";
             this.editNameSectionButton.Size = new System.Drawing.Size(141, 76);
@@ -167,7 +171,7 @@
             this.Controls.Add(this.coupleWordButton);
             this.Controls.Add(this.editNameSectionsButton);
             this.Controls.Add(this.deleteSectionButton);
-            this.Controls.Add(this.EditWordInLibrary);
+            this.Controls.Add(this.editWordInLibrary);
             this.Controls.Add(this.matchingWordButton);
             this.Controls.Add(this.createSectionButton);
             this.Controls.Add(this.exitButton);
@@ -189,7 +193,7 @@
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button createSectionButton;
         private System.Windows.Forms.Button matchingWordButton;
-        private System.Windows.Forms.Button EditWordInLibrary;
+        private System.Windows.Forms.Button editWordInLibrary;
         private System.Windows.Forms.Button deleteSectionButton;
         private System.Windows.Forms.Button editNameSectionsButton;
         private System.Windows.Forms.Button coupleWordButton;

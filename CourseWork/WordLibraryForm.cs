@@ -16,7 +16,7 @@ namespace CourseWork
         {
             InitializeComponent();
             this.person = person;
-            sectionStorage = libraryStorage.SearchLibrary(person.Login);
+            this.sectionStorage = libraryStorage.SearchLibrary(person.Login);
             if (sectionStorage.Sections != null)
             {
                 foreach (var item in sectionStorage.Sections)
@@ -89,12 +89,41 @@ namespace CourseWork
                 coupleWordButton.Show();
                 editNameSectionButton.Hide();
                 editNameSectionTextBox.Hide();
+
+                sectionStorage.Sections[sectionStorageListBox.SelectedIndex].nameSection = editNameSectionTextBox.Text;
             }
+        }
+
+
+        private void editWordInLibrary_Click(object sender, EventArgs e)
+        {
+            WordsForm wordsForm = new WordsForm(sectionStorage.SearchSection(sectionStorage,sectionStorageListBox.SelectedItem.ToString()));
+            wordsForm.ShowDialog();
+            libraryStorage.SaveLibrary(libraryStorage.Library);
         }
 
         private void editNameSectionButton_Click(object sender, EventArgs e)
         {
+            matchingWordButton.Show();
+            coupleWordButton.Show();
+            editNameSectionButton.Hide();
+            editNameSectionTextBox.Hide();
 
+            sectionStorage.Sections[sectionStorageListBox.SelectedIndex].nameSection = editNameSectionTextBox.Text;
+            libraryStorage.SaveLibrary(libraryStorage.Library);
+        }
+
+        private void matchingWordButton_Click(object sender, EventArgs e)
+        {
+            FindAFewWords findAFewWords = new FindAFewWords(sectionStorage.Sections[sectionStorageListBox.SelectedIndex],0);
+            findAFewWords.ShowDialog();
+
+        }
+
+        private void coupleWordButton_Click(object sender, EventArgs e)
+        {
+            FindAFewWords findAFewWords = new FindAFewWords(sectionStorage.Sections[sectionStorageListBox.SelectedIndex], 1);
+            findAFewWords.ShowDialog();
         }
     }
 }

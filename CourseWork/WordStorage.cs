@@ -8,30 +8,33 @@ namespace CourseWork
 {
     public class WordStorage
     {
-       public WordStorage()
+        public WordStorage()
         {
             Words = new List<Word>();
         }
-        List<Word> Words { get; set; }
+        public List<Word> Words { get; set; }
         public string nameSection;
-        public void AddWord(string piece1, string piece2)
+        protected Random random = new Random();
+
+        public Word RandomWord(List<Word> words)
+        {
+            int numberRandom = random.Next(0, words.Count);
+            return words[numberRandom];
+        }
+        public List<Word> AddWord(string piece1, string piece2)
         {
             Word word = new Word() { Piece1 = piece1, Piece2 = piece2 };
             Words.Add(word);
+            return Words;
         }
 
-        public void DeletWord(string piece1, string piece2)
+        public List<Word> DeleteWord(string piece1, string piece2)
         {
             Word word = new Word() { Piece1 = piece1, Piece2 = piece2 };
-            Words.Remove(word);
+            Words.Remove(Words.Find(u=>(u.Piece1==word.Piece1)&&(u.Piece2==word.Piece2)));
+            return Words;
         }
 
-        public void EditWord(Word word ,string piece1, string piece2)
-        {
-            word.Piece1 = piece1;
-            word.Piece2 = piece2;
-            
-        }
         public bool WordInLibrary(Word word)
         {
             if (Words.Contains(word))

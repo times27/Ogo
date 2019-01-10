@@ -63,10 +63,8 @@ namespace CourseWork
                 this.SaveLibrary(Library);
                 return searchLibrary;
             }
-            else
-            {
                 return Library[Library.FindIndex((u)=>u.id==checkId)];
-            }
+            
         }
     }
 }

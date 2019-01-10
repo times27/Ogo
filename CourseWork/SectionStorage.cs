@@ -8,9 +8,9 @@ namespace CourseWork
 {
     public class SectionStorage
     {
-        public SectionStorage()
+       public SectionStorage()
         {
-
+            this.Sections = new List<WordStorage>();
         }
         public string id=null; 
 
@@ -35,10 +35,11 @@ namespace CourseWork
             Sections.Remove(Sections[Sections.FindIndex(u=> u.nameSection==nameSection)]);
             return Sections;
         }
-        public List<WordStorage> DeleteSection(WordStorage oldWordStorage, WordStorage newWordStorage)
+        public WordStorage SearchSection(SectionStorage sectionStorage, string nameSection)
         {
-            Sections[Sections.FindIndex((u) => u == oldWordStorage)] = newWordStorage;
-            return Sections;
+            WordStorage wordStorage;
+            wordStorage = Sections[Sections.FindIndex(u => u.nameSection == nameSection)];
+            return wordStorage;
         }
 
     }
