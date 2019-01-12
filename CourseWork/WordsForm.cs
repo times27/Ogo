@@ -43,8 +43,8 @@ namespace CourseWork
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            string[] words = (wordsListBox.SelectedItem.ToString()).Split();
-            section.DeleteWord(words[0], words[2]);
+            string[] words = (wordsListBox.SelectedItem.ToString()).Split('-');
+            section.DeleteWord(section.Words,words[0].Remove(words[0].Length-1,1), words[1].Remove(0,1));
             wordsListBox.Items.Remove(wordsListBox.SelectedItem);
         }
 

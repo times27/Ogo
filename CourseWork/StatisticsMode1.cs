@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CourseWork
 {
-    class StatisticsMode1
+    public class StatisticsMode1
     {
-        int RightAnswer { get; set; }
-        int WtongAnswer { get; set; }
+        public int RightAnswer { get; set; }
+        public int WtongAnswer { get; set; }
     }
 }

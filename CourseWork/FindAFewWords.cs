@@ -12,21 +12,52 @@ namespace CourseWork
 {
     public partial class FindAFewWords : Form
     {
-        public FindAFewWords(Section section, int operationMode)
+        public FindAFewWords(List<Word> words, int operationMode)
         {
             InitializeComponent();
-            this.SetWords = new Section();
-            this.SetWords.Words = section.Words;
-            this.notUsedButtons = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+            this.setWord = words;
+            this.operationMode = operationMode;
+            
+            //    this.PersonStatistics = 
             this.Buttons = new Button[] { activeButton1, activeButton2, activeButton3, activeButton4, activeButton5, activeButton6, activeButton7, activeButton8, activeButton9, activeButton10, activeButton11, activeButton12, activeButton13, activeButton14, activeButton15, activeButton16 };
-            int UsedInitialButtons = 8 < this.SetWords.Words.Count ? 8 : this.SetWords.Words.Count;
+            FillButton();
             statisticVariableLabel1.Text = "0";
-            for (int i = 0; i < UsedInitialButtons; i++)
+        }
+        public PersonStatistic PersonStatistics { get; set; }
+        public Random random = new Random();
+        public int operationMode;
+        string notActiveButtonText = "Не активная кнопка";
+        string activeButtonText = "Активная кнопка";
+        int usedButtons;
+        int rightAnswer = 0;
+        int wtongAnswer = 0;
+        DateTime starTimes = new DateTime(0,0);
+        List<Word> setWord;
+        List<int> notUsedButtons;
+        Button[] Buttons { get; set; }
+        private void WordForRandomButton(Word word, string piece)
+        {
+            int numberRandomButton = random.Next(0, notUsedButtons.Count);
+            Buttons[notUsedButtons[numberRandomButton]].Tag = piece + word.Piece1 + "-" + word.Piece2; //tag
+            Buttons[notUsedButtons[numberRandomButton]].Text = activeButtonText;
+            Buttons[notUsedButtons[numberRandomButton]].Enabled = true;
+            notUsedButtons.Remove(notUsedButtons[numberRandomButton]);
+        }
+        public Word RandomWord(List<Word> words)
+        {
+            int numberRandom = random.Next(0, words.Count);
+            return words[numberRandom];
+        }
+        private void FillButton()
+        {
+            notUsedButtons = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+            usedButtons = 8 < this.setWord.Count ? 8 : this.setWord.Count;
+            for (int i = 0; i < usedButtons; i++)
             {
-                Word word = SetWords.RandomWord(this.SetWords.Words);
-                this.SetWords.DeleteWord(word.Piece1, word.Piece2);
-                RandomWordForButton(word, "0");
-                RandomWordForButton(word, "1");
+                Word word = RandomWord(this.setWord);
+                this.setWord.Remove(word);
+                WordForRandomButton(word, "0");
+                WordForRandomButton(word, "1");
             }
             if (operationMode == 0)
             {
@@ -42,17 +73,6 @@ namespace CourseWork
                 statisticVariableLabel1.Text = "0";
                 nameStatisticVariableLabel2.Text = "Время:";
             }
-        }
-        public Random random = new Random();
-        string notActiveButtonText = "Не активная кнопка";
-        Section SetWords { get; set; }
-        List<int> notUsedButtons { get; set; }
-        Button[] Buttons { get; set; }
-        private void RandomWordForButton(Word word, string a)
-        {
-            int numberRandomButton = random.Next(0, notUsedButtons.Count);
-            Buttons[notUsedButtons[numberRandomButton]].Tag = a + word.Piece1 + "-" + word.Piece2; //tag
-            notUsedButtons.Remove(notUsedButtons[numberRandomButton]);
         }
         private void NameButton(Button button)
         {
@@ -74,12 +94,63 @@ namespace CourseWork
             }
         }
 
-        string oldButton = null;
+        
         private void UsedButton(Button button)
         {
+            raudaTime.Enabled = true;
+            if (oldButton == null)
+            {
+                oldButton = button;
+                if( operationMode != 0)
+                {
+                    NameButton(button);
+                }
+            }
+            else
+            {
+                if (oldButton != button)
+                {
+                    if (operationMode != 0)
+                    {
+                        NameButton(button);
+                    }
+                    if (oldButton.Tag.ToString().IndexOf(button.Text) != -1)
+                    {
+                        ++rightAnswer;
+                        statisticVariableLabel1.Text = rightAnswer.ToString();
+                        statisticVariableLabel1.Focus();
 
-          
+                        --usedButtons;
+                        oldButton.Enabled = false;
+                        oldButton.Tag = notActiveButtonText;
+                        button.Enabled = false;
+                        button.Tag = notActiveButtonText;
+                        if (usedButtons == 0)
+                        {
+                            FillButton();
+                        }
+                    }
+                    else
+                    {
+                        if (operationMode == 0)
+                        {
+                            ++wtongAnswer;
+                            statisticVariableLabel2.Text = wtongAnswer.ToString();
+                            statisticVariableLabel2.Focus();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Слова скоро закроются");
+                            oldButton.Text = activeButtonText;
+                            button.Text = activeButtonText;
+                        }
+                    }
+                    oldButton = null;
+                }
+            }
         }
+        Button oldButton = null;
+       
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -89,6 +160,11 @@ namespace CourseWork
             UsedButton(sender as Button);
         }
 
+        private void raudaTime_Tick(object sender, EventArgs e)
+        {
+            starTimes.AddSeconds(1);
+            statisticVariableLabel2.Text = starTimes.ToString("mm:ss");
+        }
     }
 
 }

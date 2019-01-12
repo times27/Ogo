@@ -16,11 +16,11 @@ namespace CourseWork
         public string nameSection;
         protected Random random = new Random();
 
-        public Word RandomWord(List<Word> words)
-        {
-            int numberRandom = random.Next(0, words.Count);
-            return words[numberRandom];
-        }
+        //public Word RandomWord(List<Word> words)
+        //{
+        //    int numberRandom = random.Next(0, words.Count);
+        //    return words[numberRandom];
+        //}
 
         public List<Word> AddWord(string piece1, string piece2)
         {
@@ -29,11 +29,11 @@ namespace CourseWork
             return Words;
         }
 
-        public List<Word> DeleteWord(string piece1, string piece2)
+        public List<Word> DeleteWord(List<Word> words ,string piece1, string piece2)
         {
             Word word = new Word() { Piece1 = piece1, Piece2 = piece2 };
-            Words.Remove(Words.Find(u => (u.Piece1 == word.Piece1) && (u.Piece2 == word.Piece2)));
-            return Words;
+            words.Remove(Words.Find(u=>u.Piece1==word.Piece1 && u.Piece2==word.Piece2));
+            return words;
         }
     }
 }

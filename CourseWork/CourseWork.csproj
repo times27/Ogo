@@ -53,7 +53,7 @@
     <Compile Include="FindAFewWords.Designer.cs">
       <DependentUpon>FindAFewWords.cs</DependentUpon>
     </Compile>
-    <Compile Include="PersonStatistics.cs" />
+    <Compile Include="PersonStatistic.cs" />
     <Compile Include="NewPersonForm.cs">
       <SubType>Form</SubType>
     </Compile>

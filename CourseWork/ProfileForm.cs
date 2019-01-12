@@ -19,6 +19,7 @@ namespace CourseWork
             lastNameTextBox.Text = person.LastName;
             firstNameTextBox.Text = person.FirstName;
             loginLabel.Text = "Логин: " + person.Login;
+            label1.Text = person.StatisticsToday().DateStatistics.ToShortDateString();
         }
 
         public Person Person { get; set; }

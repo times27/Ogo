@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.activeButton1 = new System.Windows.Forms.Button();
             this.activeButton2 = new System.Windows.Forms.Button();
             this.activeButton3 = new System.Windows.Forms.Button();
@@ -49,10 +50,12 @@
             this.nameStatisticVariableLabel2 = new System.Windows.Forms.Label();
             this.statisticVariableLabel1 = new System.Windows.Forms.Label();
             this.statisticVariableLabel2 = new System.Windows.Forms.Label();
+            this.raudaTime = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // activeButton1
             // 
+            this.activeButton1.Enabled = false;
             this.activeButton1.Location = new System.Drawing.Point(12, 92);
             this.activeButton1.Name = "activeButton1";
             this.activeButton1.Size = new System.Drawing.Size(121, 82);
@@ -65,6 +68,7 @@
             // 
             // activeButton2
             // 
+            this.activeButton2.Enabled = false;
             this.activeButton2.Location = new System.Drawing.Point(139, 92);
             this.activeButton2.Name = "activeButton2";
             this.activeButton2.Size = new System.Drawing.Size(121, 82);
@@ -77,6 +81,7 @@
             // 
             // activeButton3
             // 
+            this.activeButton3.Enabled = false;
             this.activeButton3.Location = new System.Drawing.Point(266, 92);
             this.activeButton3.Name = "activeButton3";
             this.activeButton3.Size = new System.Drawing.Size(121, 82);
@@ -89,6 +94,7 @@
             // 
             // activeButton6
             // 
+            this.activeButton6.Enabled = false;
             this.activeButton6.Location = new System.Drawing.Point(139, 180);
             this.activeButton6.Name = "activeButton6";
             this.activeButton6.Size = new System.Drawing.Size(121, 82);
@@ -101,6 +107,7 @@
             // 
             // activeButton5
             // 
+            this.activeButton5.Enabled = false;
             this.activeButton5.Location = new System.Drawing.Point(12, 180);
             this.activeButton5.Name = "activeButton5";
             this.activeButton5.Size = new System.Drawing.Size(121, 82);
@@ -113,6 +120,7 @@
             // 
             // activeButton4
             // 
+            this.activeButton4.Enabled = false;
             this.activeButton4.Location = new System.Drawing.Point(393, 92);
             this.activeButton4.Name = "activeButton4";
             this.activeButton4.Size = new System.Drawing.Size(121, 82);
@@ -125,6 +133,7 @@
             // 
             // activeButton9
             // 
+            this.activeButton9.Enabled = false;
             this.activeButton9.Location = new System.Drawing.Point(12, 268);
             this.activeButton9.Name = "activeButton9";
             this.activeButton9.Size = new System.Drawing.Size(121, 82);
@@ -137,6 +146,7 @@
             // 
             // activeButton8
             // 
+            this.activeButton8.Enabled = false;
             this.activeButton8.Location = new System.Drawing.Point(393, 180);
             this.activeButton8.Name = "activeButton8";
             this.activeButton8.Size = new System.Drawing.Size(121, 82);
@@ -149,6 +159,7 @@
             // 
             // activeButton7
             // 
+            this.activeButton7.Enabled = false;
             this.activeButton7.Location = new System.Drawing.Point(266, 180);
             this.activeButton7.Name = "activeButton7";
             this.activeButton7.Size = new System.Drawing.Size(121, 82);
@@ -171,6 +182,7 @@
             // 
             // activeButton12
             // 
+            this.activeButton12.Enabled = false;
             this.activeButton12.Location = new System.Drawing.Point(393, 268);
             this.activeButton12.Name = "activeButton12";
             this.activeButton12.Size = new System.Drawing.Size(121, 82);
@@ -183,6 +195,7 @@
             // 
             // activeButton11
             // 
+            this.activeButton11.Enabled = false;
             this.activeButton11.Location = new System.Drawing.Point(266, 268);
             this.activeButton11.Name = "activeButton11";
             this.activeButton11.Size = new System.Drawing.Size(121, 82);
@@ -195,6 +208,7 @@
             // 
             // activeButton10
             // 
+            this.activeButton10.Enabled = false;
             this.activeButton10.Location = new System.Drawing.Point(139, 268);
             this.activeButton10.Name = "activeButton10";
             this.activeButton10.Size = new System.Drawing.Size(121, 82);
@@ -207,6 +221,7 @@
             // 
             // activeButton16
             // 
+            this.activeButton16.Enabled = false;
             this.activeButton16.Location = new System.Drawing.Point(393, 356);
             this.activeButton16.Name = "activeButton16";
             this.activeButton16.Size = new System.Drawing.Size(121, 82);
@@ -219,6 +234,7 @@
             // 
             // activeButton15
             // 
+            this.activeButton15.Enabled = false;
             this.activeButton15.Location = new System.Drawing.Point(266, 356);
             this.activeButton15.Name = "activeButton15";
             this.activeButton15.Size = new System.Drawing.Size(121, 82);
@@ -231,6 +247,7 @@
             // 
             // activeButton14
             // 
+            this.activeButton14.Enabled = false;
             this.activeButton14.Location = new System.Drawing.Point(139, 356);
             this.activeButton14.Name = "activeButton14";
             this.activeButton14.Size = new System.Drawing.Size(121, 82);
@@ -243,6 +260,7 @@
             // 
             // activeButton13
             // 
+            this.activeButton13.Enabled = false;
             this.activeButton13.Location = new System.Drawing.Point(12, 356);
             this.activeButton13.Name = "activeButton13";
             this.activeButton13.Size = new System.Drawing.Size(121, 82);
@@ -274,6 +292,7 @@
             // statisticVariableLabel1
             // 
             this.statisticVariableLabel1.AutoSize = true;
+            this.statisticVariableLabel1.BackColor = System.Drawing.SystemColors.Control;
             this.statisticVariableLabel1.Location = new System.Drawing.Point(664, 32);
             this.statisticVariableLabel1.Name = "statisticVariableLabel1";
             this.statisticVariableLabel1.Size = new System.Drawing.Size(86, 17);
@@ -288,6 +307,10 @@
             this.statisticVariableLabel2.Size = new System.Drawing.Size(86, 17);
             this.statisticVariableLabel2.TabIndex = 20;
             this.statisticVariableLabel2.Text = "Параметр 2";
+            // 
+            // raudaTime
+            // 
+            this.raudaTime.Tick += new System.EventHandler(this.raudaTime_Tick);
             // 
             // FindAFewWords
             // 
@@ -345,5 +368,6 @@
         private System.Windows.Forms.Label nameStatisticVariableLabel2;
         private System.Windows.Forms.Label statisticVariableLabel1;
         private System.Windows.Forms.Label statisticVariableLabel2;
+        private System.Windows.Forms.Timer raudaTime;
     }
 }

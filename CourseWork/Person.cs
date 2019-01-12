@@ -13,11 +13,13 @@ namespace CourseWork
         public Person()
         {
             Sections = new List<Section>();
+            PersonStatistics = new List<PersonStatistic>();
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Login { get; set; }
         public List<Section> Sections { get; set; }
+        public List<PersonStatistic> PersonStatistics { get; set; }
 
        // XmlSerializer formatterSection = new XmlSerializer(typeof(List<Section>));
         XmlSerializer formatterSection = new XmlSerializer(typeof(List<Person>));
@@ -60,7 +62,18 @@ namespace CourseWork
 
         public Section SectionSearch(string sectionName)
         {
-            return Sections[Sections.FindIndex(u => u.nameSection == sectionName)]; 
+            return Sections[Sections.FindIndex(u => u.nameSection == sectionName)];
+        }
+
+        public PersonStatistic StatisticsToday()
+        {
+            if(this.PersonStatistics.Find(u=> u.DateStatistics.Date == System.DateTime.Now.Date)==null)
+            {
+                PersonStatistic personStatistic = new PersonStatistic();
+                personStatistic.DateStatistics = System.DateTime.Now.Date;
+                PersonStatistics.Add(personStatistic);
+            }
+            return PersonStatistics[PersonStatistics.FindIndex(u => u.DateStatistics.Date == System.DateTime.Now.Date)];
         }
     }
 }
