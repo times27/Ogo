@@ -45,6 +45,10 @@
             this.activeButton15 = new System.Windows.Forms.Button();
             this.activeButton14 = new System.Windows.Forms.Button();
             this.activeButton13 = new System.Windows.Forms.Button();
+            this.nameStatisticVariableLabel1 = new System.Windows.Forms.Label();
+            this.nameStatisticVariableLabel2 = new System.Windows.Forms.Label();
+            this.statisticVariableLabel1 = new System.Windows.Forms.Label();
+            this.statisticVariableLabel2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // activeButton1
@@ -57,7 +61,7 @@
             this.activeButton1.Tag = "Не активная кнопка";
             this.activeButton1.Text = "Не активная кнопка";
             this.activeButton1.UseVisualStyleBackColor = true;
-            this.activeButton1.Click += new System.EventHandler(this.activeButton1_Click);
+            this.activeButton1.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton2
             // 
@@ -69,7 +73,7 @@
             this.activeButton2.Tag = "Не активная кнопка";
             this.activeButton2.Text = "Не активная кнопка";
             this.activeButton2.UseVisualStyleBackColor = true;
-            this.activeButton2.Click += new System.EventHandler(this.activeButton2_Click);
+            this.activeButton2.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton3
             // 
@@ -81,7 +85,7 @@
             this.activeButton3.Tag = "Не активная кнопка";
             this.activeButton3.Text = "Не активная кнопка";
             this.activeButton3.UseVisualStyleBackColor = true;
-            this.activeButton3.Click += new System.EventHandler(this.activeButton3_Click);
+            this.activeButton3.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton6
             // 
@@ -93,7 +97,7 @@
             this.activeButton6.Tag = "Не активная кнопка";
             this.activeButton6.Text = "Не активная кнопка";
             this.activeButton6.UseVisualStyleBackColor = true;
-            this.activeButton6.Click += new System.EventHandler(this.activeButton6_Click);
+            this.activeButton6.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton5
             // 
@@ -105,7 +109,7 @@
             this.activeButton5.Tag = "Не активная кнопка";
             this.activeButton5.Text = "Не активная кнопка";
             this.activeButton5.UseVisualStyleBackColor = true;
-            this.activeButton5.Click += new System.EventHandler(this.activeButton5_Click);
+            this.activeButton5.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton4
             // 
@@ -117,7 +121,7 @@
             this.activeButton4.Tag = "Не активная кнопка";
             this.activeButton4.Text = "Не активная кнопка";
             this.activeButton4.UseVisualStyleBackColor = true;
-            this.activeButton4.Click += new System.EventHandler(this.activeButton4_Click);
+            this.activeButton4.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton9
             // 
@@ -129,7 +133,7 @@
             this.activeButton9.Tag = "Не активная кнопка";
             this.activeButton9.Text = "Не активная кнопка";
             this.activeButton9.UseVisualStyleBackColor = true;
-            this.activeButton9.Click += new System.EventHandler(this.activeButton9_Click);
+            this.activeButton9.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton8
             // 
@@ -141,7 +145,7 @@
             this.activeButton8.Tag = "Не активная кнопка";
             this.activeButton8.Text = "Не активная кнопка";
             this.activeButton8.UseVisualStyleBackColor = true;
-            this.activeButton8.Click += new System.EventHandler(this.activeButton8_Click);
+            this.activeButton8.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton7
             // 
@@ -153,7 +157,7 @@
             this.activeButton7.Tag = "Не активная кнопка";
             this.activeButton7.Text = "Не активная кнопка";
             this.activeButton7.UseVisualStyleBackColor = true;
-            this.activeButton7.Click += new System.EventHandler(this.activeButton7_Click);
+            this.activeButton7.Click += new System.EventHandler(this.buttons_Click);
             // 
             // backButton
             // 
@@ -175,7 +179,7 @@
             this.activeButton12.Tag = "Не активная кнопка";
             this.activeButton12.Text = "Не активная кнопка";
             this.activeButton12.UseVisualStyleBackColor = true;
-            this.activeButton12.Click += new System.EventHandler(this.activeButton12_Click);
+            this.activeButton12.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton11
             // 
@@ -187,7 +191,7 @@
             this.activeButton11.Tag = "Не активная кнопка";
             this.activeButton11.Text = "Не активная кнопка";
             this.activeButton11.UseVisualStyleBackColor = true;
-            this.activeButton11.Click += new System.EventHandler(this.activeButton11_Click);
+            this.activeButton11.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton10
             // 
@@ -199,7 +203,7 @@
             this.activeButton10.Tag = "Не активная кнопка";
             this.activeButton10.Text = "Не активная кнопка";
             this.activeButton10.UseVisualStyleBackColor = true;
-            this.activeButton10.Click += new System.EventHandler(this.activeButton10_Click);
+            this.activeButton10.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton16
             // 
@@ -211,7 +215,7 @@
             this.activeButton16.Tag = "Не активная кнопка";
             this.activeButton16.Text = "Не активная кнопка";
             this.activeButton16.UseVisualStyleBackColor = true;
-            this.activeButton16.Click += new System.EventHandler(this.activeButton16_Click);
+            this.activeButton16.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton15
             // 
@@ -223,7 +227,7 @@
             this.activeButton15.Tag = "Не активная кнопка";
             this.activeButton15.Text = "Не активная кнопка";
             this.activeButton15.UseVisualStyleBackColor = true;
-            this.activeButton15.Click += new System.EventHandler(this.activeButton15_Click);
+            this.activeButton15.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton14
             // 
@@ -235,7 +239,7 @@
             this.activeButton14.Tag = "Не активная кнопка";
             this.activeButton14.Text = "Не активная кнопка";
             this.activeButton14.UseVisualStyleBackColor = true;
-            this.activeButton14.Click += new System.EventHandler(this.activeButton14_Click);
+            this.activeButton14.Click += new System.EventHandler(this.buttons_Click);
             // 
             // activeButton13
             // 
@@ -247,13 +251,53 @@
             this.activeButton13.Tag = "Не активная кнопка";
             this.activeButton13.Text = "Не активная кнопка";
             this.activeButton13.UseVisualStyleBackColor = true;
-            this.activeButton13.Click += new System.EventHandler(this.activeButton13_Click);
+            this.activeButton13.Click += new System.EventHandler(this.buttons_Click);
+            // 
+            // nameStatisticVariableLabel1
+            // 
+            this.nameStatisticVariableLabel1.AutoSize = true;
+            this.nameStatisticVariableLabel1.Location = new System.Drawing.Point(423, 32);
+            this.nameStatisticVariableLabel1.Name = "nameStatisticVariableLabel1";
+            this.nameStatisticVariableLabel1.Size = new System.Drawing.Size(135, 17);
+            this.nameStatisticVariableLabel1.TabIndex = 17;
+            this.nameStatisticVariableLabel1.Text = "Правильный ответ:";
+            // 
+            // nameStatisticVariableLabel2
+            // 
+            this.nameStatisticVariableLabel2.AutoSize = true;
+            this.nameStatisticVariableLabel2.Location = new System.Drawing.Point(423, 49);
+            this.nameStatisticVariableLabel2.Name = "nameStatisticVariableLabel2";
+            this.nameStatisticVariableLabel2.Size = new System.Drawing.Size(205, 17);
+            this.nameStatisticVariableLabel2.TabIndex = 18;
+            this.nameStatisticVariableLabel2.Text = "Время\\неправильные ответы:";
+            // 
+            // statisticVariableLabel1
+            // 
+            this.statisticVariableLabel1.AutoSize = true;
+            this.statisticVariableLabel1.Location = new System.Drawing.Point(664, 32);
+            this.statisticVariableLabel1.Name = "statisticVariableLabel1";
+            this.statisticVariableLabel1.Size = new System.Drawing.Size(86, 17);
+            this.statisticVariableLabel1.TabIndex = 19;
+            this.statisticVariableLabel1.Text = "Параметр 1";
+            // 
+            // statisticVariableLabel2
+            // 
+            this.statisticVariableLabel2.AutoSize = true;
+            this.statisticVariableLabel2.Location = new System.Drawing.Point(664, 49);
+            this.statisticVariableLabel2.Name = "statisticVariableLabel2";
+            this.statisticVariableLabel2.Size = new System.Drawing.Size(86, 17);
+            this.statisticVariableLabel2.TabIndex = 20;
+            this.statisticVariableLabel2.Text = "Параметр 2";
             // 
             // FindAFewWords
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.statisticVariableLabel2);
+            this.Controls.Add(this.statisticVariableLabel1);
+            this.Controls.Add(this.nameStatisticVariableLabel2);
+            this.Controls.Add(this.nameStatisticVariableLabel1);
             this.Controls.Add(this.activeButton16);
             this.Controls.Add(this.activeButton15);
             this.Controls.Add(this.activeButton14);
@@ -274,6 +318,7 @@
             this.Name = "FindAFewWords";
             this.Text = "FindAFewWords";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -296,5 +341,9 @@
         private System.Windows.Forms.Button activeButton15;
         private System.Windows.Forms.Button activeButton14;
         private System.Windows.Forms.Button activeButton13;
+        private System.Windows.Forms.Label nameStatisticVariableLabel1;
+        private System.Windows.Forms.Label nameStatisticVariableLabel2;
+        private System.Windows.Forms.Label statisticVariableLabel1;
+        private System.Windows.Forms.Label statisticVariableLabel2;
     }
 }

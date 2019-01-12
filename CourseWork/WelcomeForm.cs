@@ -24,9 +24,9 @@ namespace CourseWork
             Persons = personStorage.LoadPersons();
             if (personStorage.LoginInStorage(loginTextBox.Text))
             {
-                WordLibraryForm wordLibraryForm = new WordLibraryForm(Persons[Persons.FindIndex((u)=>u.Login==loginTextBox.Text)]);
+                WordSectionsForm wordSectionForm = new WordSectionsForm(Persons[Persons.FindIndex((u)=>u.Login==loginTextBox.Text)]);
                 this.Hide();
-                wordLibraryForm.ShowDialog();
+                wordSectionForm.ShowDialog();
                 this.Show();
                 
             }

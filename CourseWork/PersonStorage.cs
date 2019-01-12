@@ -7,17 +7,22 @@ using System.Xml.Serialization;
 using System.Xml;
 namespace CourseWork
 {
+    [Serializable]
     public class PersonStorage
     { 
-       
+       public PersonStorage()
+        {
+            this.LoadPersons();
+        }
         public List<Person> persons = new List<Person>();
-        XmlSerializer formatter = new XmlSerializer(typeof(List<Person>));
-        
-        public void SavePersons(List<Person> persons)
+        XmlSerializer formatterPersons = new XmlSerializer(typeof(List<Person>));
+        XmlSerializer formatterSections = new XmlSerializer(typeof(List<Person>));
+
+        public void SavePersons()//List<Person> persons
         {
             using (var xmlWriter = XmlWriter.Create("persons.xml"))
             {
-                formatter.Serialize(xmlWriter, persons);
+                formatterPersons.Serialize(xmlWriter, this.persons);
                 xmlWriter.Close();
             }
         }
@@ -26,11 +31,32 @@ namespace CourseWork
         {
             using (var xmlReader = XmlReader.Create("persons.xml"))
             {
-                persons = (List<Person>)formatter.Deserialize(xmlReader);
+                persons = (List<Person>)formatterPersons.Deserialize(xmlReader);
                 xmlReader.Close();
             }
             return persons;
         }
+
+        public void SaveSections(List<Person> persons)
+        {
+            using (var xmlWriter = XmlWriter.Create("persons.xml"))
+            {
+                formatterPersons.Serialize(xmlWriter, persons);
+                xmlWriter.Close();
+            }
+        }
+
+        //public List<Section> LoadSections()
+        //{
+        //    using (var xmlReader = XmlReader.Create("persons.xml"))
+        //    {
+        //        persons = (List<Person>)formatterPersons.Deserialize(xmlReader);
+        //        xmlReader.Close();
+        //    }
+        //    return persons.Section;
+        //}
+
+
 
         public List<Person> AddPerson(Person person)
         {
@@ -49,28 +75,14 @@ namespace CourseWork
             persons[persons.FindIndex((p) => p.Login == oldPerson.Login)] = newPerson;
             return persons;
         }
-        public bool PersonInStorage(Person person)
-        {
-            if (persons.Contains(person))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
+        
         public bool LoginInStorage(string loginPerson)
         {
-           if ((persons.Find((u)=>u.Login == loginPerson))!=null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (persons.Find((u) => u.Login == loginPerson)) != null;  
+        }    
+        public int LoginSearch(string loginPerson)
+        {
+            return (persons.FindIndex((u) => u.Login == loginPerson));
         }
     }
 }

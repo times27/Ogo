@@ -44,7 +44,6 @@
             this.wordsListBox.Name = "wordsListBox";
             this.wordsListBox.Size = new System.Drawing.Size(311, 420);
             this.wordsListBox.TabIndex = 0;
-            this.wordsListBox.SelectedIndexChanged += new System.EventHandler(this.wordsListBox_SelectedIndexChanged);
             // 
             // Piece1TextBox
             // 

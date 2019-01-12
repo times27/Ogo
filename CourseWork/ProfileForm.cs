@@ -45,7 +45,7 @@ namespace CourseWork
                 };
                 PersonStorage personStorage = new PersonStorage();
                 List<Person> persons = personStorage.EditPerson(Person,person);
-                personStorage.SavePersons(persons);
+                personStorage.SavePersons();
                 firstNameTextBox.Enabled = false;
                 lastNameTextBox.Enabled = false;
                 editProfileButton.Text = "Изменить данные";
@@ -58,7 +58,7 @@ namespace CourseWork
         {
             PersonStorage personStorage = new PersonStorage();
             List<Person> persons = personStorage.DeletePerson(Person); 
-            personStorage.SavePersons(persons);
+            personStorage.SavePersons();
             Person.FirstName = null;
             this.Close();
         }

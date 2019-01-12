@@ -12,147 +12,83 @@ namespace CourseWork
 {
     public partial class FindAFewWords : Form
     {
-        public FindAFewWords(List<Word> words, int operationMode)
+        public FindAFewWords(Section section, int operationMode)
         {
             InitializeComponent();
-            this.UsedWords = new List<Word>();
-            this.Words = words;
+            this.SetWords = new Section();
+            this.SetWords.Words = section.Words;
             this.notUsedButtons = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
             this.Buttons = new Button[] { activeButton1, activeButton2, activeButton3, activeButton4, activeButton5, activeButton6, activeButton7, activeButton8, activeButton9, activeButton10, activeButton11, activeButton12, activeButton13, activeButton14, activeButton15, activeButton16 };
-            int UsedInitialButtons = 8 < this.Words.Count ? 8 : this.Words.Count;
+            int UsedInitialButtons = 8 < this.SetWords.Words.Count ? 8 : this.SetWords.Words.Count;
+            statisticVariableLabel1.Text = "0";
             for (int i = 0; i < UsedInitialButtons; i++)
             {
-                Word word = RandomWord(words);
-                this.Words.Remove(word);
+                Word word = SetWords.RandomWord(this.SetWords.Words);
+                this.SetWords.DeleteWord(word.Piece1, word.Piece2);
                 RandomWordForButton(word, "0");
                 RandomWordForButton(word, "1");
             }
             if (operationMode == 0)
             {
+                nameStatisticVariableLabel2.Text = "Не верные ответы";
+                statisticVariableLabel2.Text = "0";
                 for (int i = 0; i < Buttons.Length; i++)
                 {
-                    if (Buttons[i].Tag.ToString().Split()[0] == "0")
-                    {
-                        Buttons[i].Text = Buttons[i].Tag.ToString().Split()[1];
-                    }
-                    else
-                    {
-                        Buttons[i].Text = Buttons[i].Tag.ToString().Split()[2];
-                    }
-
-                }
-            }
-        }
-        public Random random = new Random();
-        string notActiveButtonText = "Не активная кнопка";
-        List<Word> UsedWords { get; set; }
-        List<int> notUsedButtons { get; set; }
-        List<Word> Words { get; set; }
-        Button[] Buttons { get; set; }
-
-        private Word RandomWord(List<Word> words)
-        {
-            int numberRandom = random.Next(0, words.Count);
-            return words[numberRandom];
-        }
-        private void RandomWordForButton(Word word, string a)
-        {
-            int numberRandomButton = random.Next(0, notUsedButtons.Count);
-            Buttons[notUsedButtons[numberRandomButton]].Tag = a + " " + word.Piece1 + " " + word.Piece2; //tag
-            notUsedButtons.Remove(notUsedButtons[numberRandomButton]);
-        }
-        string oldButton = null;
-        private void UsedButton(Button button)
-        {
-
-            if (oldButton != null)
-            {
-                if (oldButton.IndexOf(button.Text) != -1)
-                {
-                    MessageBox.Show("dsd");
-                    backButton.Focus();
-
-                    oldButton = null;
-                }
-                else
-                {
-                    oldButton = button.Tag.ToString();
+                    NameButton(Buttons[i]);
                 }
             }
             else
             {
-                oldButton = button.Tag.ToString();
+                statisticVariableLabel1.Text = "0";
+                nameStatisticVariableLabel2.Text = "Время:";
             }
+        }
+        public Random random = new Random();
+        string notActiveButtonText = "Не активная кнопка";
+        Section SetWords { get; set; }
+        List<int> notUsedButtons { get; set; }
+        Button[] Buttons { get; set; }
+        private void RandomWordForButton(Word word, string a)
+        {
+            int numberRandomButton = random.Next(0, notUsedButtons.Count);
+            Buttons[notUsedButtons[numberRandomButton]].Tag = a + word.Piece1 + "-" + word.Piece2; //tag
+            notUsedButtons.Remove(notUsedButtons[numberRandomButton]);
+        }
+        private void NameButton(Button button)
+        {
+            string nameButton = button.Tag.ToString();
+            if (nameButton != notActiveButtonText)
+            {
+                if (nameButton[0] == '0')
+                {
+                    button.Text = nameButton.Remove(0, 1).Split('-')[0];
+                }
+                else
+                {
+                    button.Text = nameButton.Split('-')[1];
+                }
+            }
+            else
+            {
+                button.Enabled = false;
+            }
+        }
 
+        string oldButton = null;
+        private void UsedButton(Button button)
+        {
+
+          
         }
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        private void buttons_Click(object sender, EventArgs e)
+        {
+            UsedButton(sender as Button);
+        }
 
-        private void activeButton1_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton1);
-        }
-        private void activeButton2_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton2);
-        }
-        private void activeButton3_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton3);
-        }
-        private void activeButton4_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton4);
-        }
-        private void activeButton5_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton5);
-        }
-        private void activeButton6_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton6);
-        }
-        private void activeButton7_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton7);
-        }
-        private void activeButton8_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton8);
-        }
-        private void activeButton9_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton9);
-        }
-        private void activeButton10_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton10);
-        }
-        private void activeButton11_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton11);
-        }
-        private void activeButton12_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton12);
-        }
-        private void activeButton13_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton13);
-        }
-        private void activeButton14_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton14);
-        }
-        private void activeButton15_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton15);
-        }
-        private void activeButton16_Click(object sender, EventArgs e)
-        {
-            UsedButton(activeButton16);
-        }
     }
+
 }

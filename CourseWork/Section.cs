@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CourseWork
 {
-    public class WordStorage
+    public class Section
     {
-        public WordStorage()
+        public Section()
         {
             Words = new List<Word>();
         }
@@ -21,6 +21,7 @@ namespace CourseWork
             int numberRandom = random.Next(0, words.Count);
             return words[numberRandom];
         }
+
         public List<Word> AddWord(string piece1, string piece2)
         {
             Word word = new Word() { Piece1 = piece1, Piece2 = piece2 };
@@ -31,20 +32,8 @@ namespace CourseWork
         public List<Word> DeleteWord(string piece1, string piece2)
         {
             Word word = new Word() { Piece1 = piece1, Piece2 = piece2 };
-            Words.Remove(Words.Find(u=>(u.Piece1==word.Piece1)&&(u.Piece2==word.Piece2)));
+            Words.Remove(Words.Find(u => (u.Piece1 == word.Piece1) && (u.Piece2 == word.Piece2)));
             return Words;
-        }
-
-        public bool WordInLibrary(Word word)
-        {
-            if (Words.Contains(word))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
     }
 }

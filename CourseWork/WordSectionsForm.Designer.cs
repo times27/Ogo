@@ -1,6 +1,6 @@
 ﻿namespace CourseWork
 {
-    partial class WordLibraryForm
+    partial class WordSectionsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -180,7 +180,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "WordLibraryForm";
             this.Text = "Библиотеки";
-            this.Load += new System.EventHandler(this.WordLibraryForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

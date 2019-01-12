@@ -12,49 +12,39 @@ namespace CourseWork
 {
     public partial class WordsForm : Form
     {
-        public WordsForm(WordStorage wordStorage)
+        public WordsForm(Section section)
         {
             InitializeComponent();
-            this.wordStorage = wordStorage;
-            if (wordStorage.Words != null)
+            this.section = section;
+            if (section.Words != null)
             {
-                foreach (var item in wordStorage.Words)
+                foreach (var item in section.Words)
                 {
-                    wordsListBox.Items.Add(item.Piece1+" - "+item.Piece2);
+                    wordsListBox.Items.Add(item.Piece1 + " - " + item.Piece2);
                 }
             }
         }
-        WordStorage wordStorage;
-
-        private void wordsListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        Section section;
 
         private void addWordButton_Click(object sender, EventArgs e)
         {
-            if ((Piece1TextBox.Text.Length < 1) || (Piece2TextBox.Text.Length < 1))
+
+            if ((Piece1TextBox.Text.Length < 1) || (Piece2TextBox.Text.Length < 1) || ((Piece1TextBox.Text + Piece2TextBox.Text).IndexOf("-") != -1))
             {
-                MessageBox.Show("Добавьте обе части");
+                MessageBox.Show("Обе части должны состоять из 1 слова и в словах не допустим символ \"-\" ");
             }
             else
             {
-                if ((Piece1TextBox.Text.Length < 1) || (Piece2TextBox.Text.Length<1))
-                {
-                    MessageBox.Show("Обе части должны состоять из 1 слова");
-                }
-                else
-                {
-                    wordStorage.AddWord(Piece1TextBox.Text, Piece2TextBox.Text);
-                    wordsListBox.Items.Add(Piece1TextBox.Text + " - " + Piece2TextBox.Text);
-                }
+                section.AddWord(Piece1TextBox.Text, Piece2TextBox.Text);
+                wordsListBox.Items.Add(Piece1TextBox.Text + " - " + Piece2TextBox.Text);
             }
+
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
             string[] words = (wordsListBox.SelectedItem.ToString()).Split();
-            wordStorage.DeleteWord(words[0], words[2]);
+            section.DeleteWord(words[0], words[2]);
             wordsListBox.Items.Remove(wordsListBox.SelectedItem);
         }
 

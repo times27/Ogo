@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace CourseWork
 {
-    public partial class WordLibraryForm : Form
+    public partial class WordSectionsForm : Form
     {
-        public WordLibraryForm(Person person)
+        public WordSectionsForm(Person person)
         {
             InitializeComponent();
             this.person = person;
-            this.sectionStorage = libraryStorage.SearchLibrary(person.Login);
-            if (sectionStorage.Sections != null)
+            this.person.LoadSections();
+            if (this.person.Sections != null)
             {
-                foreach (var item in sectionStorage.Sections)
+                foreach (var item in this.person.Sections)
                 {
                     sectionStorageListBox.Items.Add(item.nameSection);
                 }
@@ -29,16 +29,13 @@ namespace CourseWork
         }
 
         Person person = new Person();
-        LibraryStorage libraryStorage = new LibraryStorage();
-        SectionStorage sectionStorage = new SectionStorage();
         private void profileLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
             ProfileForm profileForm = new ProfileForm(person);
             profileForm.ShowDialog();
             if (profileForm.Person.FirstName == null)
-            {
-                libraryStorage.DeleteLibrary(profileForm.Person.Login); 
+            { 
                 this.Close();
             }
             else
@@ -52,25 +49,15 @@ namespace CourseWork
             this.Close();
         }
 
-        private void WordLibraryForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void createSectionButton_Click(object sender, EventArgs e)
         {
-            var oldSectionStorage = sectionStorage;
-            sectionStorage.AddSection();
-            libraryStorage.EditLibrary(oldSectionStorage,sectionStorage);
-            sectionStorageListBox.Items.Add(sectionStorage.Sections.Last().nameSection);
+
+            sectionStorageListBox.Items.Add(person.AddSection().nameSection);
         }
 
         private void deleteSectionButton_Click(object sender, EventArgs e)
         {
-            var oldSectionStorage = sectionStorage;
-            sectionStorage.DeleteSection(sectionStorageListBox.SelectedItem.ToString());
-            libraryStorage.EditLibrary(oldSectionStorage, sectionStorage);
-            sectionStorageListBox.Items.Remove(sectionStorageListBox.SelectedItem);
+            sectionStorageListBox.Items.Remove(person.DeleteSection(sectionStorageListBox.SelectedItem.ToString()));
         }
 
         private void editNameSectionsButton_Click(object sender, EventArgs e)
@@ -90,16 +77,16 @@ namespace CourseWork
                 editNameSectionButton.Hide();
                 editNameSectionTextBox.Hide();
 
-                sectionStorage.Sections[sectionStorageListBox.SelectedIndex].nameSection = editNameSectionTextBox.Text;
+                person.Sections[sectionStorageListBox.SelectedIndex].nameSection = editNameSectionTextBox.Text;
             }
         }
 
 
         private void editWordInLibrary_Click(object sender, EventArgs e)
         {
-            WordsForm wordsForm = new WordsForm(sectionStorage.SearchSection(sectionStorage,sectionStorageListBox.SelectedItem.ToString()));
+            WordsForm wordsForm = new WordsForm(person.SectionSearch(sectionStorageListBox.SelectedItem.ToString()));
             wordsForm.ShowDialog();
-            libraryStorage.SaveLibrary(libraryStorage.Library);
+            person.SaveSections(person.Sections);
         }
 
         private void editNameSectionButton_Click(object sender, EventArgs e)
@@ -109,20 +96,20 @@ namespace CourseWork
             editNameSectionButton.Hide();
             editNameSectionTextBox.Hide();
 
-            sectionStorage.Sections[sectionStorageListBox.SelectedIndex].nameSection = editNameSectionTextBox.Text;
-            libraryStorage.SaveLibrary(libraryStorage.Library);
+            person.Sections[sectionStorageListBox.SelectedIndex].nameSection = editNameSectionTextBox.Text;
+            person.SaveSections(person.Sections);
         }
 
         private void matchingWordButton_Click(object sender, EventArgs e)
         {
-            FindAFewWords findAFewWords = new FindAFewWords(sectionStorage.Sections[sectionStorageListBox.SelectedIndex].Words,0);
+            FindAFewWords findAFewWords = new FindAFewWords(person.SectionSearch(sectionStorageListBox.SelectedItems.ToString()), 0);
             findAFewWords.ShowDialog();
 
         }
 
         private void coupleWordButton_Click(object sender, EventArgs e)
         {
-            FindAFewWords findAFewWords = new FindAFewWords(sectionStorage.Sections[sectionStorageListBox.SelectedIndex].Words, 1);
+            FindAFewWords findAFewWords = new FindAFewWords(person.SectionSearch(sectionStorageListBox.SelectedItems.ToString()), 1);
             findAFewWords.ShowDialog();
         }
     }

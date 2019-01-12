@@ -31,7 +31,7 @@ namespace CourseWork
             if (!personStorage.LoginInStorage(person.Login))
             {
                 Persons = personStorage.AddPerson(person);
-                personStorage.SavePersons(Persons);
+                personStorage.SavePersons();
                 MessageBox.Show("Пользователь добавлен.");
                 this.Close();
             }
