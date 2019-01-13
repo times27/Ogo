@@ -20,8 +20,7 @@ namespace CourseWork
         public string Login { get; set; }
         public List<Section> Sections { get; set; }
         public List<PersonStatistic> PersonStatistics { get; set; }
-
-       // XmlSerializer formatterSection = new XmlSerializer(typeof(List<Section>));
+        
         XmlSerializer formatterSection = new XmlSerializer(typeof(List<Person>));
 
         public void SaveSections(List<Section> sections)
@@ -31,9 +30,18 @@ namespace CourseWork
             personStorage.SavePersons();
         }
 
+        
+
+        public void SaveStatistic(List<PersonStatistic> personStatistics)
+        {
+            PersonStorage personStorage = new PersonStorage();
+            personStorage.persons[personStorage.LoginSearch(Login)].PersonStatistics = personStatistics;
+            personStorage.SavePersons();
+        }
+
         public List<Section> LoadSections()
         {
-            
+
             PersonStorage personStorage = new PersonStorage();
             Sections = personStorage.persons[personStorage.LoginSearch(Login)].Sections;
             return Sections;

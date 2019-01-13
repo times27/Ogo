@@ -19,7 +19,18 @@ namespace CourseWork
             lastNameTextBox.Text = person.LastName;
             firstNameTextBox.Text = person.FirstName;
             loginLabel.Text = "Логин: " + person.Login;
-            label1.Text = person.StatisticsToday().DateStatistics.ToShortDateString();
+            
+            foreach (var item in person.PersonStatistics)
+            {
+                mode1Chart.Series[0].Points.AddXY(item.DateStatistics,item.StatisticsMode1s.RightAnswer);
+                mode1Chart.Series[1].Points.AddXY(item.DateStatistics, item.StatisticsMode1s.WtongAnswer);
+            }
+            foreach (var item in person.PersonStatistics)
+            {
+                double checkTo0 = item.StatisticsMode2s.StarTimes.Minute == 0 ? 1 : item.StatisticsMode2s.StarTimes.Minute;
+                double quantityPerMinute = item.StatisticsMode2s.RightAnswer / (checkTo0*60) ;
+                mode2Chart.Series[0].Points.AddXY(item.DateStatistics, quantityPerMinute);
+            }
         }
 
         public Person Person { get; set; }
@@ -67,6 +78,11 @@ namespace CourseWork
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void chart2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

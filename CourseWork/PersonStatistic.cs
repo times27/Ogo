@@ -11,12 +11,12 @@ namespace CourseWork
         public PersonStatistic()
         {
             DateStatistics = new DateTime();
-            StatisticsMode1s = new List<StatisticsMode1>();
-            StatisticsMode2s = new List<StatisticsMode2>();
+            StatisticsMode1s = new StatisticsMode1();
+            StatisticsMode2s = new StatisticsMode2();
         }
         
-        public List<StatisticsMode1> StatisticsMode1s { get; set; }
-        public List<StatisticsMode2> StatisticsMode2s { get; set; }
+        public StatisticsMode1 StatisticsMode1s { get; set; }
+        public StatisticsMode2 StatisticsMode2s { get; set; }
         public DateTime DateStatistics { get; set; }
     }
 }

@@ -12,13 +12,12 @@ namespace CourseWork
 {
     public partial class FindAFewWords : Form
     {
-        public FindAFewWords(List<Word> words, int operationMode)
+        public FindAFewWords(List<Word> words,PersonStatistic personStatistic, int operationMode)
         {
             InitializeComponent();
-            this.setWord = words;
+            this.setWord = new List<Word>(words);
             this.operationMode = operationMode;
-            
-            //    this.PersonStatistics = 
+            this.PersonStatistics = personStatistic;
             this.Buttons = new Button[] { activeButton1, activeButton2, activeButton3, activeButton4, activeButton5, activeButton6, activeButton7, activeButton8, activeButton9, activeButton10, activeButton11, activeButton12, activeButton13, activeButton14, activeButton15, activeButton16 };
             FillButton();
             statisticVariableLabel1.Text = "0";
@@ -31,7 +30,7 @@ namespace CourseWork
         int usedButtons;
         int rightAnswer = 0;
         int wtongAnswer = 0;
-        DateTime starTimes = new DateTime(0,0);
+        DateTime starTimes = new DateTime();
         List<Word> setWord;
         List<int> notUsedButtons;
         Button[] Buttons { get; set; }
@@ -72,6 +71,7 @@ namespace CourseWork
             {
                 statisticVariableLabel1.Text = "0";
                 nameStatisticVariableLabel2.Text = "Время:";
+                statisticVariableLabel2.Text = "00:00:00";
             }
         }
         private void NameButton(Button button)
@@ -97,13 +97,19 @@ namespace CourseWork
         
         private void UsedButton(Button button)
         {
-            raudaTime.Enabled = true;
+            
             if (oldButton == null)
             {
                 oldButton = button;
                 if( operationMode != 0)
                 {
                     NameButton(button);
+                    if (!raudaTime.Enabled)
+                    {
+                        raudaTime.Enabled = true;
+                        raudaTime.Start();
+                        starTimes = DateTime.Now;
+                    }
                 }
             }
             else
@@ -153,6 +159,18 @@ namespace CourseWork
        
         private void backButton_Click(object sender, EventArgs e)
         {
+            if(operationMode==0)
+            {
+                PersonStatistics.StatisticsMode1s.RightAnswer += rightAnswer;
+                PersonStatistics.StatisticsMode1s.WtongAnswer += wtongAnswer;
+            }
+            else
+            {
+                PersonStatistics.StatisticsMode2s.RightAnswer += rightAnswer;
+                PersonStatistics.StatisticsMode2s.StarTimes.AddSeconds(starTimes.Second);
+                PersonStatistics.StatisticsMode2s.StarTimes.AddMinutes(starTimes.Minute);
+
+            }
             this.Close();
         }
         private void buttons_Click(object sender, EventArgs e)
@@ -162,8 +180,8 @@ namespace CourseWork
 
         private void raudaTime_Tick(object sender, EventArgs e)
         {
-            starTimes.AddSeconds(1);
-            statisticVariableLabel2.Text = starTimes.ToString("mm:ss");
+            var elapsedTime = (DateTime.Now - starTimes);
+            statisticVariableLabel2.Text = elapsedTime.ToString(@"hh\:mm\:ss");
         }
     }
 

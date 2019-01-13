@@ -28,6 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.loginLabel = new System.Windows.Forms.Label();
@@ -36,10 +43,12 @@
             this.lastNameLabel = new System.Windows.Forms.Label();
             this.firstNameLabel = new System.Windows.Forms.Label();
             this.backButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.mode1Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.mode2Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.NonActivLabel1 = new System.Windows.Forms.Label();
+            this.NonActivLavel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.mode1Chart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mode2Chart)).BeginInit();
             this.SuspendLayout();
             // 
             // firstNameTextBox
@@ -116,51 +125,76 @@
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // label1
+            // mode1Chart
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(510, 123);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "label1";
+            chartArea1.Name = "ChartArea1";
+            this.mode1Chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.mode1Chart.Legends.Add(legend1);
+            this.mode1Chart.Location = new System.Drawing.Point(366, 60);
+            this.mode1Chart.Name = "mode1Chart";
+            this.mode1Chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series1.Legend = "Legend1";
+            series1.Name = "Правильный ответ";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series2.Legend = "Legend1";
+            series2.Name = "Неверный ответ";
+            this.mode1Chart.Series.Add(series1);
+            this.mode1Chart.Series.Add(series2);
+            this.mode1Chart.Size = new System.Drawing.Size(547, 201);
+            this.mode1Chart.TabIndex = 8;
+            this.mode1Chart.Text = "Сопоставь";
             // 
-            // label2
+            // mode2Chart
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(596, 220);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "label2";
+            chartArea2.Name = "ChartArea1";
+            this.mode2Chart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.mode2Chart.Legends.Add(legend2);
+            this.mode2Chart.Location = new System.Drawing.Point(366, 289);
+            this.mode2Chart.Name = "mode2Chart";
+            this.mode2Chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series3.Legend = "Legend1";
+            series3.Name = "Минутный коэффециент";
+            series3.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            this.mode2Chart.Series.Add(series3);
+            this.mode2Chart.Size = new System.Drawing.Size(547, 201);
+            this.mode2Chart.TabIndex = 9;
+            this.mode2Chart.Text = "Парочки";
+            this.mode2Chart.Click += new System.EventHandler(this.chart2_Click);
             // 
-            // label3
+            // NonActivLabel1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(548, 311);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 17);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "label3";
+            this.NonActivLabel1.AutoSize = true;
+            this.NonActivLabel1.Location = new System.Drawing.Point(366, 266);
+            this.NonActivLabel1.Name = "NonActivLabel1";
+            this.NonActivLabel1.Size = new System.Drawing.Size(63, 17);
+            this.NonActivLabel1.TabIndex = 10;
+            this.NonActivLabel1.Text = "Режим 2";
             // 
-            // label4
+            // NonActivLavel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(655, 275);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 17);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "label4";
+            this.NonActivLavel.AutoSize = true;
+            this.NonActivLavel.Location = new System.Drawing.Point(366, 40);
+            this.NonActivLavel.Name = "NonActivLavel";
+            this.NonActivLavel.Size = new System.Drawing.Size(63, 17);
+            this.NonActivLavel.TabIndex = 11;
+            this.NonActivLavel.Text = "Режим 1";
             // 
             // ProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(925, 465);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(925, 502);
+            this.Controls.Add(this.NonActivLavel);
+            this.Controls.Add(this.NonActivLabel1);
+            this.Controls.Add(this.mode2Chart);
+            this.Controls.Add(this.mode1Chart);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.firstNameLabel);
             this.Controls.Add(this.lastNameLabel);
@@ -171,6 +205,8 @@
             this.Controls.Add(this.firstNameTextBox);
             this.Name = "ProfileForm";
             this.Text = "Профиль";
+            ((System.ComponentModel.ISupportInitialize)(this.mode1Chart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mode2Chart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,9 +222,9 @@
         private System.Windows.Forms.Label lastNameLabel;
         private System.Windows.Forms.Label firstNameLabel;
         private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataVisualization.Charting.Chart mode1Chart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart mode2Chart;
+        private System.Windows.Forms.Label NonActivLabel1;
+        private System.Windows.Forms.Label NonActivLavel;
     }
 }

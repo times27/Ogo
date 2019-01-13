@@ -102,17 +102,19 @@ namespace CourseWork
 
         private void matchingWordButton_Click(object sender, EventArgs e)
         {
-            FindAFewWords findAFewWords = new FindAFewWords(person.SectionSearch(sectionStorageListBox.SelectedItem.ToString()).Words, 0);
+            PersonStatistic personStatistic = person.StatisticsToday();
+            FindAFewWords findAFewWords = new FindAFewWords(person.SectionSearch(sectionStorageListBox.SelectedItem.ToString()).Words, personStatistic , 0);
             findAFewWords.ShowDialog();
-            this.person.LoadSections();
+            person.SaveStatistic(person.PersonStatistics);
 
         }
 
         private void coupleWordButton_Click(object sender, EventArgs e)
         {
-            FindAFewWords findAFewWords = new FindAFewWords(person.SectionSearch(sectionStorageListBox.SelectedItem.ToString()).Words, 1);
+            PersonStatistic personStatistic = person.StatisticsToday();
+            FindAFewWords findAFewWords = new FindAFewWords(person.SectionSearch(sectionStorageListBox.SelectedItem.ToString()).Words, personStatistic , 1);
             findAFewWords.ShowDialog();
-            this.person.LoadSections();
+            person.SaveStatistic(person.PersonStatistics);
         }
     }
 }

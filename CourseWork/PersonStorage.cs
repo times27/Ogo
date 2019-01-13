@@ -18,7 +18,7 @@ namespace CourseWork
         XmlSerializer formatterPersons = new XmlSerializer(typeof(List<Person>));
         XmlSerializer formatterSections = new XmlSerializer(typeof(List<Person>));
 
-        public void SavePersons()//List<Person> persons
+        public void SavePersons()
         {
             using (var xmlWriter = XmlWriter.Create("persons.xml"))
             {
@@ -36,28 +36,7 @@ namespace CourseWork
             }
             return persons;
         }
-
-        public void SaveSections(List<Person> persons)
-        {
-            using (var xmlWriter = XmlWriter.Create("persons.xml"))
-            {
-                formatterPersons.Serialize(xmlWriter, persons);
-                xmlWriter.Close();
-            }
-        }
-
-        //public List<Section> LoadSections()
-        //{
-        //    using (var xmlReader = XmlReader.Create("persons.xml"))
-        //    {
-        //        persons = (List<Person>)formatterPersons.Deserialize(xmlReader);
-        //        xmlReader.Close();
-        //    }
-        //    return persons.Section;
-        //}
-
-
-
+        
         public List<Person> AddPerson(Person person)
         {
             persons.Add(person);
