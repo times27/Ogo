@@ -161,7 +161,7 @@
             this.editNameSectionButton.Visible = false;
             this.editNameSectionButton.Click += new System.EventHandler(this.editNameSectionButton_Click);
             // 
-            // WordLibraryForm
+            // WordSectionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -178,8 +178,8 @@
             this.Controls.Add(this.profileLink);
             this.Controls.Add(this.sectionStorageListBox);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "WordLibraryForm";
-            this.Text = "Библиотеки";
+            this.Name = "WordSectionsForm";
+            this.Text = "Секции";
             this.ResumeLayout(false);
             this.PerformLayout();
 

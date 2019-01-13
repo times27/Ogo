@@ -14,13 +14,6 @@ namespace CourseWork
         }
         public List<Word> Words { get; set; }
         public string nameSection;
-        protected Random random = new Random();
-
-        //public Word RandomWord(List<Word> words)
-        //{
-        //    int numberRandom = random.Next(0, words.Count);
-        //    return words[numberRandom];
-        //}
 
         public List<Word> AddWord(string piece1, string piece2)
         {

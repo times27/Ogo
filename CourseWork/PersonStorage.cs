@@ -16,7 +16,6 @@ namespace CourseWork
         }
         public List<Person> persons = new List<Person>();
         XmlSerializer formatterPersons = new XmlSerializer(typeof(List<Person>));
-        XmlSerializer formatterSections = new XmlSerializer(typeof(List<Person>));
 
         public void SavePersons()
         {

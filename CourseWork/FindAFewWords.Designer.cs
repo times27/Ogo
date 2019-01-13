@@ -339,7 +339,7 @@
             this.Controls.Add(this.activeButton2);
             this.Controls.Add(this.activeButton1);
             this.Name = "FindAFewWords";
-            this.Text = "FindAFewWords";
+            this.Text = "Работа со словами";
             this.ResumeLayout(false);
             this.PerformLayout();
 

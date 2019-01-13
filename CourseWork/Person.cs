@@ -21,7 +21,6 @@ namespace CourseWork
         public List<Section> Sections { get; set; }
         public List<PersonStatistic> PersonStatistics { get; set; }
         
-        XmlSerializer formatterSection = new XmlSerializer(typeof(List<Person>));
 
         public void SaveSections(List<Section> sections)
         {

@@ -101,7 +101,7 @@
             this.Controls.Add(this.Piece1TextBox);
             this.Controls.Add(this.wordsListBox);
             this.Name = "WordsForm";
-            this.Text = "WordsForm";
+            this.Text = "Слова";
             this.ResumeLayout(false);
             this.PerformLayout();
 

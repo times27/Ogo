@@ -84,7 +84,7 @@
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // PersonForm
+            // NewPersonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -94,8 +94,8 @@
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.lastNameTextBox);
             this.Controls.Add(this.newPersonButton);
-            this.Name = "PersonForm";
-            this.Text = "Меню пользователя";
+            this.Name = "NewPersonForm";
+            this.Text = "Регистрация";
             this.Load += new System.EventHandler(this.PersonForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
